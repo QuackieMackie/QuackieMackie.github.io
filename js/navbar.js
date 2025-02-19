@@ -4,13 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isActive = (path) => currentPath.endsWith(path) ? 'active' : '';
 
-    const navbarHTML = `
+    document.getElementById("navbar-container").innerHTML = `
         <nav>
             <a href="${basePath}${pages.home}" class="${isActive(pages.home)}">Home</a>
             <a href="${basePath}${pages.blog}" class="${isActive(pages.blog)}">Blog</a>
             <a href="${pages.github}" target="_blank">GitHub</a>
         </nav>
     `;
-
-    document.getElementById("navbar-container").innerHTML = navbarHTML;
 });

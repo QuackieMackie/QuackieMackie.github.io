@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isActive = (path) => currentPath.endsWith(path) ? 'active' : '';
 
-    const footerHTML = `
+    document.getElementById("footer-container").innerHTML = `
         <footer>
             <p>&copy; 2025 QuackieMackie. Built with ❤ and curiosity.</p>
             <nav>
@@ -14,6 +14,4 @@ document.addEventListener("DOMContentLoaded", () => {
             </nav>
         </footer>
     `;
-
-    document.getElementById("footer-container").innerHTML = footerHTML;
 });
