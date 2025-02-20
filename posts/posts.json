@@ -2,7 +2,13 @@
   {
     "file": "post1.md",
     "title": "My First Blog Post",
-    "description": "",
+    "description": "This is my first test post in the blog.",
     "date": "19/02/2025"
+  },
+  {
+    "file": "post2.md",
+    "title": "Updating the github pages",
+    "description": "I updated the website to include a post html page and a post js, this dynamically loads each md file attached to each blog post.",
+    "date": "20/02/2025"
   }
 ]

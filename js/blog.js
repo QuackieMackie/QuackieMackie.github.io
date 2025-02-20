@@ -6,19 +6,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         const posts = await response.json();
 
         for (const post of posts) {
-            const postResponse = await fetch(`../posts/${post.file}`);
-            const postContent = await postResponse.text();
-
             const postElement = document.createElement('div');
             postElement.classList.add('post');
 
             postElement.innerHTML = `
-                <h3>${post.title}</h3>
-                <p><strong>Date:</strong> ${post.date}</p>
-                <p>${post.description}</p>
-                <hr>
-                <div>${marked.parse(postContent)}</div>
+                <section>
+                    <h3>${post.title}</h3>
+                    <p><strong>Date:</strong> ${post.date}</p>
+                    <p>${post.description}</p>
+                    <hr>
+                    <button class="read-more">Read More</button>
+                </section>
             `;
+
+            postElement.querySelector(".read-more").addEventListener("click", () => {
+                window.location.href = `../pages/post.html?post=${post.file}`;
+            });
+
 
             postsContainer.appendChild(postElement);
         }

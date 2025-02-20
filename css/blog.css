@@ -1,17 +1,24 @@
 /* Blog Content */
 main {
     padding: 20px;
-    max-width: 800px;
     margin: auto;
+    width: 100%;
+    max-width: 100%;
 }
 
 .post {
+    width: 80vw;
     background: #1E1E2C;
     color: #D4D4D8;
     padding: 15px;
-    margin: 15px 0;
+    margin: 15px auto;
     border-radius: 5px;
     text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post + .post {
+    margin-top: 20px;
 }
 
 .post h3 {
