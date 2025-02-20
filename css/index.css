@@ -42,3 +42,100 @@ hr {
     margin: 40px auto;
     width: 80%;
 }
+
+/* Repos Section Styling */
+#repos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+/* Individual Repo Box */
+.repo-box {
+    border: 2px solid #9b59b6;
+    border-radius: 8px;
+    padding: 20px;
+    width: calc(33.333% - 40px);
+    box-sizing: border-box;
+    background-color: #1E1E2C;
+    color: #D4D4D8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Repo Box Hover Effect */
+.repo-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Repo Box Heading */
+.repo-box h4 {
+    margin-bottom: 10px;
+    color: #9b59b6;
+}
+
+/* Repo Box Description */
+.repo-box p {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: #bbb;
+}
+
+/* Repo Box Link */
+.repo-box a {
+    text-decoration: none;
+    color: #9b59b6;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.repo-box a:hover {
+    text-decoration: underline;
+    color: #8e44ad;
+}
+
+/* Responsiveness for Smaller Screens */
+@media (max-width: 768px) {
+    .repo-box {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .repo-box {
+        width: 100%;
+    }
+}
+
+/* Language Bar */
+.language-bar {
+    width: 90%;
+    height: 10px;
+    margin: 10px auto;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #1E1E2C;
+}
+
+/* Individual Language Blocks */
+.language-bar div {
+    height: 100%;
+    float: left;
+}
+
+/* Language Percentages (Inline Info under the Bar) */
+.language-info {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-top: 5px;
+}
+
+.language-info span {
+    display: inline-block;
+    margin-right: 10px;
+}

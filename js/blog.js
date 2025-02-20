@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         const response = await fetch('../posts/posts.json');
         const posts = await response.json();
 
+        posts.sort((a, b) => {
+            const dateA = new Date(a.date.split('/').reverse().join('-'));
+            const dateB = new Date(b.date.split('/').reverse().join('-'));
+            return dateB - dateA;
+        });
+
         for (const post of posts) {
             const postElement = document.createElement('div');
             postElement.classList.add('post');

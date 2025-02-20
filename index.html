@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/favicon.ico">
     <title>QuackieMackie's GitHub Page</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/index.css">
@@ -10,6 +11,7 @@
     <script src="/js/navbar.js" defer></script>
     <script src="/js/footer.js" defer></script>
     <script src="/js/sliding-icons.js"></script>
+    <script src="/js/repos-container.js" defer></script>
 </head>
 <body>
 <header>
@@ -23,6 +25,11 @@
         <p>Welcome to my GitHub Page! Here, I plan on showcasing projects I am working on, ideas I think up, and completed projects.</p>
         <button onclick="window.location.href='https://github.com/QuackieMackie'">My GitHub</button>
         <button onclick="window.location.href='./pages/blog.html'">Visit Blog</button>
+    </section>
+    <hr>
+    <section id="repos">
+        <h3>My GitHub Repositories</h3>
+        <div id="repos-container" class="repo-grid"></div>
     </section>
     <hr>
     <section id="languages">
