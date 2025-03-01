@@ -8,13 +8,13 @@ main {
 
 .post {
     width: 80vw;
-    background: #1E1E2C;
-    color: #D4D4D8;
+    background: var(--secondary-bg);
+    color: var(--text-primary);
     padding: 15px;
     margin: 15px auto;
     border-radius: 5px;
     text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--shadow-primary);
 }
 
 .post + .post {
@@ -22,5 +22,5 @@ main {
 }
 
 .post h3 {
-    color: #9b59b6;
+    color: var(--accent-primary);
 }

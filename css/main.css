@@ -1,12 +1,36 @@
 /* Global Reset */
+:root {
+    /* General Background Colors */
+    --main-bg: #202031;
+    --secondary-bg: #1E1E2C;
+    --footer-bg: #121212;
+
+    /* Text Colors */
+    --text-primary: #D4D4D8;
+    --text-secondary: #bbb;
+    --text-accent: #ffffff;
+
+    /* Accent Colors */
+    --accent-primary: #9b59b6;
+    --accent-hover: #8e44ad;
+
+    /* Border Colors */
+    --border-primary: #9b59b6;
+    --border-secondary: #555;
+
+    /* Shadow Colors */
+    --shadow-primary: rgba(0, 0, 0, 0.2);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+}
+
 html, body {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
     font-family: Arial, sans-serif;
-    background: #202031;
-    color: #D4D4D8;
+    background: var(--main-bg);
+    color: var(--text-primary);
     text-align: center;
     user-select: none;
 }
@@ -19,8 +43,8 @@ main {
 
 /* Header */
 header {
-    background: #1E1E2C;
-    color: #fff;
+    background: var(--secondary-bg);
+    color: var(--text-accent);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -28,7 +52,7 @@ header {
 }
 
 header a {
-    color: #9b59b6;
+    color: var(--accent-primary);
     text-decoration: none;
     font-weight: bold;
     margin: 0 15px;
@@ -40,8 +64,8 @@ header a:hover {
 
 /* Navbar */
 nav {
-    background: #1E1E2C;
-    color: #fff;
+    background: var(--secondary-bg);
+    color: var(--text-accent);
     padding: 10px 20px;
     text-align: center;
     position: sticky;
@@ -50,7 +74,7 @@ nav {
 }
 
 nav a {
-    color: #9b59b6;
+    color: var(--accent-primary);
     text-decoration: none;
     font-weight: bold;
     margin: 0 15px;
@@ -63,20 +87,20 @@ nav a:hover {
 
 /* Footer */
 footer {
-    background: #121212;
-    color: #bbb;
+    background: var(--footer-bg);
+    color: var(--text-secondary);
     padding: 20px 0;
     text-align: center;
-    border-top: 1px solid #555;
+    border-top: 1px solid var(--border-secondary);
 }
 
 footer nav {
     margin-top: 10px;
-    background: #121212;
+    background: var(--footer-bg);
 }
 
 footer nav a {
-    color: #9b59b6;
+    color: var(--accent-primary);
     text-decoration: none;
     margin: 0 10px;
 }
@@ -87,8 +111,8 @@ footer nav a:hover {
 
 /* Buttons */
 button {
-    background-color: #9b59b6;
-    color: #202031;
+    background-color: var(--accent-primary);
+    color: var(--main-bg);
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -98,7 +122,7 @@ button {
 }
 
 button:hover {
-    background-color: #8e44ad;
+    background-color: var(--accent-hover);
 }
 
 /* Responsiveness */
