@@ -66,15 +66,26 @@ hr {
     color: var(--accent-hover);
 }
 
-/* Responsiveness for Smaller Screens */
 @media (max-width: 768px) {
+    section {
+        padding: 10px;
+        max-width: 100%; /* Allow content to take full width */
+    }
+
+    #repos-container {
+        flex-direction: column; /* Stack repo boxes */
+        gap: 15px;
+    }
+
     .repo-box {
-        width: calc(50% - 20px);
+        width: 100%; /* Full width for smaller devices */
+        box-shadow: 0 2px 4px var(--shadow-primary); /* Lighter shadow */
     }
 }
 
 @media (max-width: 480px) {
-    .repo-box {
-        width: 100%;
+    hr {
+        margin: 20px auto; /* Adjust spacing around separators */
+        width: 90%;
     }
 }
