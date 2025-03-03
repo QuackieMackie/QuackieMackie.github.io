@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const postContent = document.getElementById("post-content");
+    const { basePath } = config;
 
     const urlParams = new URLSearchParams(window.location.search);
     const postFile = urlParams.get("post");
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch(`../posts/${postFile}`);
+        const response = await fetch(`${basePath}/posts/${postFile}`);
         const markdownContent = await response.text();
 
         postContent.innerHTML = marked.parse(markdownContent);

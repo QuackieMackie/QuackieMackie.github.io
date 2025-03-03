@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    const { basePath } = config;
     const postsContainer = document.getElementById('blog-posts');
 
     try {
-        const response = await fetch('../posts/posts.json');
+        const response = await fetch(`${basePath}/posts/posts.json`);
         const posts = await response.json();
 
         posts.sort((a, b) => {
@@ -26,9 +27,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
 
             postElement.querySelector(".read-more").addEventListener("click", () => {
-                window.location.href = `../pages/post.html?post=${post.file}`;
+                window.location.href = `${basePath}/pages/post.html?post=${post.file}`;
             });
-
 
             postsContainer.appendChild(postElement);
         }
