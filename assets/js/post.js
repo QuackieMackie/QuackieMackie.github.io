@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch(`${basePath}/posts/${postFile}`);
+        const response = await fetch(`${basePath}/_posts/${postFile}`);
         const markdownContent = await response.text();
 
         postContent.innerHTML = marked.parse(markdownContent);
