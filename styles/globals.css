@@ -1,0 +1,516 @@
+:root {
+    /* Layout sizing */
+    --sidebar-width: 260px;
+    --activity-width: 450px;
+    --sidebar-current-width: var(--sidebar-width);
+    --gutter: 16px;
+
+    /* Core theme colors */
+    --bg: #0a1410; /* page background */
+    --panel: #111f1a; /* panel/surfaces */
+    --text: #e0e6dc; /* primary text */
+    --muted: #7f8c82; /* secondary text */
+    --accent: #2dd4bf; /* primary accent */
+
+    /* Extended palette */
+    --accent-hover: #22d3ee;
+    --border: #1f2937;
+    --border-strong: #334155;
+    --surface-deep: #0b1220; /* deep surface, hovers, icon pills */
+    --on-accent: #0b1220; /* icon/text on accent backgrounds */
+    --grad-start: #334155;
+    --grad-end: #0ea5e9;
+    --overlay-1: rgba(255, 255, 255, 0.02);
+    --overlay-2: rgba(255, 255, 255, 0.03);
+    --shadow-1: rgba(0, 0, 0, 0.25);
+    --shadow-2: rgba(0, 0, 0, 0.3);
+    --skeleton: #1a2a23;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#__next {
+    height: 100%;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        Fira Sans,
+        Droid Sans,
+        Helvetica Neue,
+        sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+hr {
+    border-color: var(--border);
+}
+
+/* Layout container simply hosts fixed elements */
+.layout {
+    position: relative;
+}
+
+/* Left Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    padding: 24px 16px;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform: translateX(0);
+    transition:
+        transform 500ms ease,
+        width 500ms ease;
+    z-index: 60;
+}
+/* slide closed fully off-screen */
+.sidebar-closed .sidebar {
+    transform: translateX(-100%);
+}
+.sidebar-open .sidebar {
+    transform: translateX(0);
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+}
+.username {
+    font-weight: 600;
+}
+.contacts {
+    display: flex;
+    gap: 12px;
+    font-size: 1.2rem;
+    color: var(--muted);
+}
+.contacts a:hover {
+    color: var(--accent);
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nav a {
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: var(--muted);
+}
+.nav a:hover {
+    background: var(--surface-deep);
+    color: var(--text);
+}
+
+/* Main content is scrollable between fixed sidebars */
+.main {
+    position: relative;
+    margin-left: var(--gutter);
+    margin-right: var(--gutter);
+    padding: 24px;
+    min-height: 100vh;
+    transition:
+        margin-left 500ms ease,
+        margin-right 500ms ease;
+}
+/* Desktop reserves space for sidebars */
+@media (min-width: 1024px) {
+    .main {
+        margin-left: calc(var(--sidebar-width) + var(--gutter));
+    }
+    .activity-open .main {
+        margin-right: calc(var(--activity-width) + var(--gutter));
+    }
+    /* Sidebar is always visible on desktop, even before JS sets state */
+    .sidebar-closed .sidebar {
+        transform: translateX(0);
+    }
+    .sidebar {
+        transform: translateX(0);
+    }
+    /* Hide the left external toggle on desktop (sidebar is always open there) */
+    .layout > .toggle-button.left {
+        display: none;
+    }
+}
+
+/* When sidebar is closed, let content expand to the left (tablet only) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .sidebar-closed .main {
+        margin-left: var(--gutter);
+    }
+}
+
+.section {
+    max-width: 900px;
+    margin: 0 auto 64px;
+}
+.section h1,
+.section h2 {
+    margin: 0 0 12px;
+}
+.section p {
+    line-height: 1.7;
+    color: var(--muted);
+}
+.section a {
+    color: var(--accent);
+    text-decoration: underline;
+    font-weight: 500;
+}
+.section a:hover {
+    color: var(--accent-hover);
+    text-decoration: none;
+}
+
+/* Tech Stack section styling */
+.tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.tech-icons a img {
+    width: 60px;
+    height: 60px;
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.tech-icons a:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.3);
+}
+
+/* Tablet and Mobile: resize icons */
+@media (max-width: 1023px) {
+    .tech-icons a img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    .tech-icons a img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Right Activity Sidebar */
+.activity {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--activity-width);
+    height: 100vh;
+    background: var(--panel);
+    border-left: 1px solid var(--border);
+    padding: 24px 16px;
+    transform: translateX(0);
+    transition: transform 500ms ease;
+    z-index: 60;
+}
+.activity-inner {
+    position: sticky;
+    top: 24px;
+}
+
+/* Activity open/closed state */
+.activity-closed .activity {
+    transform: translateX(100%);
+}
+.activity-open .activity {
+    transform: translateX(0);
+}
+
+/* External tab handles (outside panels, move with panel edges) */
+.layout > .toggle-button {
+    position: fixed;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 72px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent);
+    color: var(--on-accent);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-2);
+    z-index: 80;
+    transition:
+        left 500ms ease,
+        right 500ms ease,
+        background 200ms ease;
+}
+.layout > .toggle-button:hover {
+    background: var(--accent-hover);
+}
+.layout > .toggle-button i {
+    font-size: 1rem;
+}
+
+.layout.sidebar-open > .toggle-button.left {
+    left: var(--sidebar-current-width);
+    border-radius: 0 8px 8px 0;
+}
+.layout.sidebar-closed > .toggle-button.left {
+    left: 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.layout.activity-open > .toggle-button.right {
+    right: var(--activity-width);
+    border-radius: 8px 0 0 8px;
+}
+.layout.activity-closed > .toggle-button.right {
+    right: 0;
+    border-radius: 8px 0 0 8px;
+}
+
+/* Responsive rules: mobile and tablet */
+@media (max-width: 1023px) {
+    .main {
+        margin-left: var(--gutter);
+    }
+    /* Hide the activity feed and its toggle on small and tablet screens */
+    .activity {
+        display: none;
+    }
+    .toggle-button.right {
+        display: none;
+    }
+}
+
+/* Mobile-only: sidebar takes 95% of viewport width as overlay */
+@media (max-width: 767px) {
+    :root {
+        --sidebar-current-width: 95vw;
+    }
+    .sidebar {
+        width: 95vw;
+    }
+}
+
+/* Projects grid and cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 16px;
+}
+@media (min-width: 640px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (min-width: 1280px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.project-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    transition:
+        transform 200ms ease,
+        box-shadow 200ms ease,
+        border-color 200ms ease;
+}
+.project-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+    box-shadow: 0 8px 24px var(--shadow-1);
+}
+.project-card h3 {
+    margin: 8px 0 6px;
+    font-size: 1.1rem;
+}
+.project-card p {
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+.project-card a {
+    color: var(--accent);
+    font-weight: 600;
+}
+.project-card a:hover {
+    text-decoration: underline;
+}
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Enhanced Activity Feed styles */
+.activity {
+    overflow-y: auto;
+}
+.activity-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+.activity-title {
+    margin: 0;
+    font-size: 1.1rem;
+}
+.activity-username {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+.activity-username:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.activity-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--overlay-1);
+    transition:
+        border-color 200ms ease,
+        transform 200ms ease,
+        background 200ms ease;
+}
+.activity-item:hover {
+    border-color: var(--border-strong);
+    background: var(--overlay-2);
+    transform: translateY(-1px);
+}
+.activity-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    background: var(--surface-deep);
+    color: var(--accent);
+    flex: 0 0 32px;
+    font-size: 14px;
+}
+.activity-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
+}
+.activity-text {
+    min-width: 0;
+}
+.activity-link {
+    color: var(--text);
+}
+.activity-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.activity-subtitle {
+    color: var(--muted);
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.activity-meta {
+    color: var(--muted);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.activity-error,
+.activity-empty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    padding: 12px;
+    border: 1px dashed var(--border-strong);
+    border-radius: 10px;
+    background: var(--overlay-1);
+}
+
+/* Skeleton loading */
+.activity-item.skeleton {
+    pointer-events: none;
+}
+.skeleton-avatar {
+    background: var(--skeleton);
+    border-radius: 9999px;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+}
+.skeleton-line {
+    height: 10px;
+    background: var(--skeleton);
+    border-radius: 6px;
+    margin: 6px 0;
+}
+.skeleton-line.w-70 {
+    width: 70%;
+}
+.skeleton-line.w-40 {
+    width: 40%;
+}
