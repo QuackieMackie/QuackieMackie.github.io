@@ -229,6 +229,16 @@ function formatEvent(ev) {
                 title: `Open-sourced ${base.repo}`,
             };
         }
+        case 'GollumEvent': {
+            const page = ev.payload?.pages?.[0];
+            return {
+                ...base,
+                icon: 'fa-solid fa-book',
+                title: `Edited wiki page: ${page?.page_name || 'Unknown'}`,
+                subtitle: base.repo,
+                url: page?.html_url || base.url,
+            };
+        }
         default: {
             return {
                 ...base,
