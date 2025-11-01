@@ -57,8 +57,8 @@ export default function FilterableProjects() {
             {
                 title: 'QuestJournal',
                 description:
-                    "A Dalamud plugin that let's users see details that FFXIV doesn't always provide.",
-                link: 'https://github.com/Sylphian-Network/Sylphian-ToolTip',
+                    "A Dalamud plugin that let's users see quest details that FFXIV doesn't always provide.",
+                link: 'https://github.com/QuackieMackie/QuestJournal',
                 category: FILTERS.CORE,
             },
         ],
