@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectCard from './ProjectCard';
+import FilterableProjects from './FilterableProjects';
 
 export default function MainContent() {
     return (
@@ -160,43 +160,7 @@ export default function MainContent() {
 
             <section id="projects" className="section">
                 <h2>Current Projects</h2>
-                <div className="projects-grid">
-                    <ProjectCard
-                        title="Sylphian Forum"
-                        description="A safe, ad-free LGBTQ+ community forum I created and maintain, built using Xenforo."
-                        link="https://sylphian.net"
-                    />
-                    <ProjectCard
-                        title="Sylphian/Library"
-                        description="A Xenforo library add-on of useful code used for my other add-ons for Sylphian."
-                        link="https://github.com/Sylphian-Network/Sylphian-Library"
-                    />
-                    <ProjectCard
-                        title="Sylphian/UserPets"
-                        description="A Xenforo add-on that gives users their own pets, allows for users to interact with their own pet, view other user's pets and duel pets."
-                        link="https://github.com/Sylphian-Network/Sylphian-UserPets"
-                    />
-                    <ProjectCard
-                        title="Sylphian/Leaderboard"
-                        description="A Xenforo add-on that acts as a framework for developers to create their own leaderboards."
-                        link="https://github.com/Sylphian-Network/Sylphian-Leaderboard"
-                    />
-                    <ProjectCard
-                        title="Sylphian/Map"
-                        description="A Xenforo add-on that lets users contribute to a map with their own markers. Markers can be linked with times and dates, as well as Xenforo threads."
-                        link="https://github.com/Sylphian-Network/Sylphian-Map"
-                    />
-                    <ProjectCard
-                        title="Sylphian/ToolTip"
-                        description="A Xenforo add-on that let's admins control who can see what groups can see profiles when hovering over a user."
-                        link="https://github.com/Sylphian-Network/Sylphian-ToolTip"
-                    />
-                    <ProjectCard
-                        title="QuestJournal"
-                        description="A Dalamud plugin that let's users see details that FFXIV doesn't always provide."
-                        link="https://github.com/Sylphian-Network/Sylphian-ToolTip"
-                    />
-                </div>
+                <FilterableProjects />
             </section>
         </main>
     );
