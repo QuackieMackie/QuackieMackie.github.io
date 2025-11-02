@@ -5,7 +5,7 @@ export default function Sidebar() {
         <aside className="sidebar">
             <div className="profile">
                 <img
-                    src="/assets/avatar.png"
+                    src="/assets/avatar.webp"
                     alt="Profile image"
                     width={120}
                     height={120}
