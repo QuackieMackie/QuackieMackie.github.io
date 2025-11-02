@@ -9,7 +9,7 @@
     --bg: #0a1410; /* page background */
     --panel: #111f1a; /* panel/surfaces */
     --text: #e0e6dc; /* primary text */
-    --muted: #7f8c82; /* secondary text */
+    --muted: #cbd5c1; /* secondary text */
     --accent: #2dd4bf; /* primary accent */
 
     /* Extended palette */
@@ -21,7 +21,7 @@
     --grad-start: #334155;
     --grad-end: #0ea5e9;
     --overlay-1: rgba(255, 255, 255, 0.02);
-    --overlay-2: rgba(255, 255, 255, 0.03);
+    --overlay-2: rgba(255, 255, 255, 0.1);
     --shadow-1: rgba(0, 0, 0, 0.25);
     --shadow-2: rgba(0, 0, 0, 0.3);
     --skeleton: #1a2a23;
