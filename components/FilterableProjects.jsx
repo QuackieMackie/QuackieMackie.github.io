@@ -62,7 +62,7 @@ export default function FilterableProjects() {
                 category: FILTERS.CORE,
             },
         ],
-        []
+        [],
     );
 
     const filtered = useMemo(() => {

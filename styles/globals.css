@@ -335,18 +335,8 @@ hr {
 /* Projects grid and cards */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 16px;
-}
-@media (min-width: 640px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-@media (min-width: 1280px) {
-    .projects-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
 }
 
 .project-card {
@@ -515,7 +505,6 @@ hr {
     width: 40%;
 }
 
-
 /* Project filters and category styles */
 .project-filters {
     display: flex;
@@ -531,7 +520,10 @@ hr {
     padding: 6px 12px;
     font-size: 0.95rem;
     cursor: pointer;
-    transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+    transition:
+        background 150ms ease,
+        border-color 150ms ease,
+        color 150ms ease;
 }
 .filter-button:hover {
     border-color: var(--border-strong);
@@ -583,5 +575,30 @@ hr {
     to {
         opacity: 1;
         transform: none;
+    }
+}
+
+/*
+  Responsive activity panel width for desktop (≥1024px):
+
+  Goal:
+    - Preserve a minimum main content width of 328px
+      (280px min card + 48px main padding).
+    - Limit activity panel width to 450px on large screens.
+
+  Calculation:
+    --activity-width = clamp(
+      320px,
+      100vw - sidebar width - main content min width - 2 × gutter,
+      450px
+    );
+*/
+@media (min-width: 1024px) {
+    :root {
+        --activity-width: clamp(
+            320px,
+            calc(100vw - var(--sidebar-width) - 328px - var(--gutter) - var(--gutter)),
+            450px
+        );
     }
 }
