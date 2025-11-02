@@ -14,7 +14,7 @@ export default function MainContent() {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        here
+                        on the GitHub issues page
                     </a>
                     .
                 </p>
@@ -43,8 +43,8 @@ export default function MainContent() {
             <section id="tech" className="section">
                 <h2>Tech Stack</h2>
                 <p>
-                    I work with a variety of programming languages, frameworks, databases, and tools. Here are some
-                    of the ones I use:
+                    I work with a variety of programming languages, frameworks, databases, and
+                    tools. Here are some of the ones I use:
                 </p>
                 <div className="tech-icons">
                     <a href="https://www.java.com" target="_blank" rel="noreferrer">
