@@ -322,13 +322,13 @@ hr {
     }
 }
 
-/* Mobile-only: sidebar takes 95% of viewport width as overlay */
+/* Mobile-only: sidebar takes 75% of viewport width as overlay */
 @media (max-width: 767px) {
     :root {
-        --sidebar-current-width: 95vw;
+        --sidebar-current-width: 75vw;
     }
     .sidebar {
-        width: 95vw;
+        width: 75vw;
     }
 }
 
