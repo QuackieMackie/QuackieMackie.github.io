@@ -1,4 +1,41 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+    faTriangleExclamation,
+    faCodeCommit,
+    faCodePullRequest,
+    faPlus,
+    faTrash,
+    faCodeFork,
+    faTag,
+    faUnlock,
+    faBook,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+    faFaceSmile,
+    faCircleDot,
+    faComment,
+    faStar,
+    faCommentDots,
+    faCircle as faCircleRegular,
+} from '@fortawesome/free-regular-svg-icons';
+
+const ICON_MAP = {
+    'fa-solid fa-code-commit': faCodeCommit,
+    'fa-solid fa-code-pull-request': faCodePullRequest,
+    'fa-regular fa-circle-dot': faCircleDot,
+    'fa-regular fa-comment': faComment,
+    'fa-solid fa-plus': faPlus,
+    'fa-solid fa-trash': faTrash,
+    'fa-solid fa-code-fork': faCodeFork,
+    'fa-regular fa-star': faStar,
+    'fa-solid fa-tag': faTag,
+    'fa-regular fa-comment-dots': faCommentDots,
+    'fa-solid fa-unlock': faUnlock,
+    'fa-solid fa-book': faBook,
+    'fa-regular fa-circle': faCircleRegular,
+};
 
 export default function ActivityFeed({ username = 'quackiemackie' }) {
     const [events, setEvents] = useState([]);
@@ -53,7 +90,7 @@ export default function ActivityFeed({ username = 'quackiemackie' }) {
                         rel="noopener noreferrer"
                         title={`Open @${username} on GitHub`}
                     >
-                        <i className="fa-brands fa-github" /> @{username}
+                        <FontAwesomeIcon icon={faGithub} /> @{username}
                     </a>
                 </header>
 
@@ -73,13 +110,13 @@ export default function ActivityFeed({ username = 'quackiemackie' }) {
 
                 {!loading && error && (
                     <div className="activity-error" role="alert">
-                        <i className="fa-solid fa-triangle-exclamation" /> {error}
+                        <FontAwesomeIcon icon={faTriangleExclamation} /> {error}
                     </div>
                 )}
 
                 {!loading && !error && items.length === 0 && (
                     <div className="activity-empty">
-                        <i className="fa-regular fa-face-smile" /> No recent public activity.
+                        <FontAwesomeIcon icon={faFaceSmile} /> No recent public activity.
                     </div>
                 )}
 
@@ -87,7 +124,9 @@ export default function ActivityFeed({ username = 'quackiemackie' }) {
                     <ul className="activity-list">
                         {items.map((it) => (
                             <li key={it.id} className="activity-item">
-                                <span className={`activity-icon ${it.icon}`} aria-hidden />
+                                <span className="activity-icon" aria-hidden>
+                                    <FontAwesomeIcon icon={ICON_MAP[it.icon] || faCircleRegular} />
+                                </span>
                                 <div className="activity-body">
                                     <div className="activity-text">
                                         <a

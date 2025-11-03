@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function ToggleButton({
     side = 'right',
@@ -16,7 +18,7 @@ export default function ToggleButton({
             title={ariaLabel}
             onClick={onToggle}
         >
-            {isOpen ? <i className="fa-solid fa-xmark" /> : <i className="fa-solid fa-bars" />}
+            <FontAwesomeIcon icon={isOpen ? faXmark : faBars} />
         </button>
     );
 }

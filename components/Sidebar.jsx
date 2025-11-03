@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 export default function Sidebar() {
     return (
@@ -19,14 +21,14 @@ export default function Sidebar() {
                         rel="noopener noreferrer"
                         aria-label="GitHub"
                     >
-                        <i className="fa-brands fa-github" />
+                        <FontAwesomeIcon icon={faGithub} />
                     </a>
                     <a
                         href="#"
                         aria-label="Discord Username"
                         title="Add me on Discord: quackiemackie"
                     >
-                        <i className="fa-brands fa-discord" />
+                        <FontAwesomeIcon icon={faDiscord} />
                     </a>
                 </div>
             </div>
