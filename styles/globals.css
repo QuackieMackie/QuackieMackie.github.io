@@ -207,9 +207,19 @@ hr {
     margin-top: 16px;
 }
 
-.tech-icons a img {
+.tech-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 60px;
     height: 60px;
+    overflow: hidden;
+}
+
+.tech-icons a img {
+    width: 100%;
+    height: 100%;
+    display: block;
     transition:
         transform 0.2s ease,
         filter 0.2s ease;
@@ -222,14 +232,14 @@ hr {
 
 /* Tablet and Mobile: resize icons */
 @media (max-width: 1023px) {
-    .tech-icons a img {
+    .tech-icons a {
         width: 40px;
         height: 40px;
     }
 }
 
 @media (max-width: 767px) {
-    .tech-icons a img {
+    .tech-icons a {
         width: 40px;
         height: 40px;
     }

@@ -53,6 +53,8 @@ export default function MainContent() {
                             alt="Java"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a href="https://www.python.org" target="_blank" rel="noreferrer">
@@ -61,6 +63,8 @@ export default function MainContent() {
                             alt="Python"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a href="https://www.docker.com/" target="_blank" rel="noreferrer">
@@ -69,6 +73,8 @@ export default function MainContent() {
                             alt="Docker"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a
@@ -81,6 +87,8 @@ export default function MainContent() {
                             alt="MSSQL"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a href="https://www.sqlite.org/" target="_blank" rel="noreferrer">
@@ -89,6 +97,8 @@ export default function MainContent() {
                             alt="SQLite"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a href="https://www.postgresql.org" target="_blank" rel="noreferrer">
@@ -97,6 +107,8 @@ export default function MainContent() {
                             alt="PostgreSQL"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a href="https://nodejs.org" target="_blank" rel="noreferrer">
@@ -105,6 +117,8 @@ export default function MainContent() {
                             alt="Node.js"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a
@@ -117,6 +131,8 @@ export default function MainContent() {
                             alt="JavaScript"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
@@ -125,6 +141,8 @@ export default function MainContent() {
                             alt="CSS3"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer">
@@ -133,6 +151,8 @@ export default function MainContent() {
                             alt="HTML5"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a
@@ -145,6 +165,8 @@ export default function MainContent() {
                             alt="C#"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                     <a href="https://www.php.net/" target="_blank" rel="noreferrer">
@@ -153,6 +175,8 @@ export default function MainContent() {
                             alt="PHP"
                             width="60"
                             height="60"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </a>
                 </div>
