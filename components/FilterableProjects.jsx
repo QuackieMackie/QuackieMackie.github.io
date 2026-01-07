@@ -55,6 +55,13 @@ export default function FilterableProjects() {
                 category: FILTERS.ADDON,
             },
             {
+                title: 'Sylphian/Verify',
+                description:
+                    'A Xenforo add-on that works as a bridge between a game server and the forum, letting users connect game accounts to the site.',
+                link: 'https://github.com/Sylphian-Network/Sylphian-Verify',
+                category: FILTERS.ADDON,
+            },
+            {
                 title: 'QuestJournal',
                 description:
                     "A Dalamud plugin that let's users see quest details that FFXIV doesn't always provide.",
