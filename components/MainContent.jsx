@@ -52,7 +52,7 @@ export default function MainContent() {
                 <span className="eyebrow">About</span>
                 <h2>About Me</h2>
                 <p>
-                    I’m a 22-year-old developer who enjoys building bits and bobs. I usually go with
+                    I’m a 23-year-old developer who enjoys building bits and bobs. I usually go with
                     what piques my curiosity. I enjoy turning ideas into tangible projects, flushing
                     out ideas, and coming up with solutions to problems.
                 </p>
