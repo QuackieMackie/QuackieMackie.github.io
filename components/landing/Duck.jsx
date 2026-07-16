@@ -22,7 +22,7 @@ export default function Duck({
         const center = new THREE.Vector3();
         box.getSize(size);
         box.getCenter(center);
-        const s = targetHeight / 4 * (size.y || 1);
+        const s = (targetHeight / 4) * (size.y || 1);
         clone.position.set(-center.x * s, -center.y * s, -center.z * s);
         clone.scale.setScalar(s);
         return clone;
