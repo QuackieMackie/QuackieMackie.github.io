@@ -5,7 +5,7 @@ import MainContent from './MainContent';
 import ActivityFeed from './ActivityFeed';
 import ToggleButton from './ToggleButton';
 
-export default function Layout({ children }) {
+export default function Layout({ children, revealed = true }) {
     const { activityOpen, setActivityOpen, sidebarOpen, setSidebarOpen } = useUI();
 
     const handleSidebarToggle = () => {
@@ -18,7 +18,7 @@ export default function Layout({ children }) {
 
     return (
         <div
-            className={`layout ${activityOpen ? 'activity-open' : 'activity-closed'} ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}
+            className={`layout ${activityOpen ? 'activity-open' : 'activity-closed'} ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'} ${revealed ? 'app-revealed' : 'landing-active'}`}
         >
             {/* Left sidebar panel */}
             <Sidebar />

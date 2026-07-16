@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import ProjectCard from './ProjectCard';
+import Reveal from './Reveal';
 
 const FILTERS = {
     ALL: 'All',
@@ -110,14 +111,15 @@ export default function FilterableProjects() {
             </div>
 
             <div className="projects-grid fade-in" key={filter}>
-                {filtered.map((proj) => (
-                    <ProjectCard
-                        key={proj.title}
-                        title={proj.title}
-                        description={proj.description}
-                        link={proj.link}
-                        category={proj.category}
-                    />
+                {filtered.map((proj, i) => (
+                    <Reveal as="div" key={proj.title} delay={i * 0.05}>
+                        <ProjectCard
+                            title={proj.title}
+                            description={proj.description}
+                            link={proj.link}
+                            category={proj.category}
+                        />
+                    </Reveal>
                 ))}
             </div>
         </div>

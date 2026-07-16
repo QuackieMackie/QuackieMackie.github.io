@@ -1,27 +1,55 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
 import FilterableProjects from './FilterableProjects';
+import Reveal from './Reveal';
+
+const TECH = [
+    { name: 'Java', href: 'https://www.java.com', icon: 'java/java-original.svg' },
+    { name: 'Python', href: 'https://www.python.org', icon: 'python/python-original.svg' },
+    { name: 'Docker', href: 'https://www.docker.com/', icon: 'docker/docker-original.svg' },
+    {
+        name: 'MSSQL',
+        href: 'https://www.microsoft.com/en-us/sql-server',
+        src: 'https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg',
+    },
+    {
+        name: 'SQLite',
+        href: 'https://www.sqlite.org/',
+        src: 'https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg',
+    },
+    {
+        name: 'PostgreSQL',
+        href: 'https://www.postgresql.org',
+        icon: 'postgresql/postgresql-original.svg',
+    },
+    { name: 'Node.js', href: 'https://nodejs.org', icon: 'nodejs/nodejs-original.svg' },
+    {
+        name: 'JavaScript',
+        href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+        icon: 'javascript/javascript-original.svg',
+    },
+    { name: 'CSS3', href: 'https://www.w3schools.com/css/', icon: 'css3/css3-original.svg' },
+    { name: 'HTML5', href: 'https://www.w3.org/html/', icon: 'html5/html5-original.svg' },
+    {
+        name: 'C#',
+        href: 'https://learn.microsoft.com/en-us/dotnet/csharp/',
+        icon: 'csharp/csharp-original.svg',
+    },
+    { name: 'PHP', href: 'https://www.php.net/', icon: 'php/php-original.svg' },
+];
+
+const DEVICON_BASE = 'https://raw.githubusercontent.com/devicons/devicon/master/icons';
 
 export default function MainContent() {
+    const tech = useMemo(
+        () => TECH.map((t) => ({ ...t, src: t.src || `${DEVICON_BASE}/${t.icon}` })),
+        [],
+    );
+
     return (
         <main className="main">
-            <section id="home" className="section">
-                <h1>Welcome to my portfolio v2.0</h1>
-                <p>
-                    I wanted to revamp my portfolio, as it had not had any attention in months. This
-                    is the end result, any issues please let me know{' '}
-                    <a
-                        href="https://github.com/QuackieMackie/QuackieMackie.github.io/issues"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        on the GitHub issues page
-                    </a>
-                    .
-                </p>
-            </section>
-
-            <section id="about" className="section">
+            <Reveal as="section" id="about" className="section">
+                <span className="eyebrow">About</span>
                 <h2>About Me</h2>
                 <p>
                     I’m a 22-year-old developer who enjoys building bits and bobs. I usually go with
@@ -39,130 +67,40 @@ export default function MainContent() {
                     are key priorities, so members can feel comfortable expressing themselves
                     freely.
                 </p>
-            </section>
+            </Reveal>
 
-            <section id="tech" className="section">
+            <Reveal as="section" id="tech" className="section">
+                <span className="eyebrow">Stack</span>
                 <h2>Tech Stack</h2>
                 <p>
                     I work with a variety of programming languages, frameworks, databases, and
                     tools. Here are some of the ones I use:
                 </p>
-                <div className="tech-icons">
-                    <a href="https://www.java.com" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
-                            alt="Java"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a href="https://www.python.org" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-                            alt="Python"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a href="https://www.docker.com/" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg"
-                            alt="Docker"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a
-                        href="https://www.microsoft.com/en-us/sql-server"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <Image
-                            src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg"
-                            alt="MSSQL"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a href="https://www.sqlite.org/" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg"
-                            alt="SQLite"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a href="https://www.postgresql.org" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg"
-                            alt="PostgreSQL"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a href="https://nodejs.org" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
-                            alt="Node.js"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a
-                        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
-                            alt="JavaScript"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
-                            alt="CSS3"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
-                            alt="HTML5"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a
-                        href="https://learn.microsoft.com/en-us/dotnet/csharp/"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
-                            alt="C#"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
-                    <a href="https://www.php.net/" target="_blank" rel="noreferrer">
-                        <Image
-                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg"
-                            alt="PHP"
-                            width={60}
-                            height={60}
-                        />
-                    </a>
+                <div className="tech-grid">
+                    {tech.map((t, i) => (
+                        <Reveal as="div" key={t.name} delay={i * 0.04}>
+                            <a
+                                href={t.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="tech-chip"
+                                title={t.name}
+                            >
+                                <span className="tech-chip-icon">
+                                    <Image src={t.src} alt={t.name} width={36} height={36} />
+                                </span>
+                                <span className="tech-chip-label">{t.name}</span>
+                            </a>
+                        </Reveal>
+                    ))}
                 </div>
-            </section>
+            </Reveal>
 
-            <section id="projects" className="section">
+            <Reveal as="section" id="projects" className="section">
+                <span className="eyebrow">Work</span>
                 <h2>Current Projects</h2>
                 <FilterableProjects />
-            </section>
+            </Reveal>
         </main>
     );
 }

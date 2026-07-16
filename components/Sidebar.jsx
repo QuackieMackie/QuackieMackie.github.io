@@ -1,21 +1,38 @@
-import React from 'react';
-import { useUI } from '../context/UIContext';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faDiscord } from '@fortawesome/free-brands-svg-icons';
-import {
-    faHouse,
-    faUser,
-    faCode,
-    faBriefcase,
-    faWrench,
-    faChevronDown,
-    faChevronRight,
-    faFileCode,
-} from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faUser, faCode, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
+const SECTION_IDS = ['landing', 'about', 'tech', 'projects'];
+
+const NAV_ITEMS = [
+    { id: 'landing', href: '/#landing', label: 'Home', icon: faHouse },
+    { id: 'about', href: '/#about', label: 'About Me', icon: faUser },
+    { id: 'tech', href: '/#tech', label: 'Tech Stack', icon: faCode },
+    { id: 'projects', href: '/#projects', label: 'Current Projects', icon: faBriefcase },
+];
+
 export default function Sidebar() {
-    const { isToolsOpen, setIsToolsOpen } = useUI();
+    const [activeSection, setActiveSection] = useState(SECTION_IDS[0]);
+
+    useEffect(() => {
+        const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean);
+        if (sections.length === 0) return undefined;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visible = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+                if (visible) setActiveSection(visible.target.id);
+            },
+            { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <aside className="sidebar">
@@ -28,6 +45,7 @@ export default function Sidebar() {
                     className="avatar"
                 />
                 <div className="username">QuackieMackie</div>
+                <div className="role-subtitle">Developer</div>
                 <div className="contacts" aria-label="Contact placeholders">
                     <a
                         href="https://github.com/QuackieMackie"
@@ -47,44 +65,15 @@ export default function Sidebar() {
                 </div>
             </div>
             <nav className="nav">
-                <Link href="/#home">
-                    <FontAwesomeIcon icon={faHouse} /> Home
-                </Link>
-                <Link href="/#about">
-                    <FontAwesomeIcon icon={faUser} /> About Me
-                </Link>
-                <Link href="/#tech">
-                    <FontAwesomeIcon icon={faCode} /> Tech Stack
-                </Link>
-                <Link href="/#projects">
-                    <FontAwesomeIcon icon={faBriefcase} /> Current Projects
-                </Link>
-            </nav>
-
-            <div className="nav-section-title">Extras</div>
-            <nav className="nav">
-                <div className="dropdown">
-                    <button
-                        className="dropdown-toggle"
-                        onClick={() => setIsToolsOpen(!isToolsOpen)}
-                        aria-expanded={isToolsOpen}
+                {NAV_ITEMS.map((item) => (
+                    <Link
+                        key={item.id}
+                        href={item.href}
+                        className={activeSection === item.id ? 'active' : ''}
                     >
-                        <div className="dropdown-label">
-                            <FontAwesomeIcon icon={faWrench} /> Tools
-                        </div>
-                        <FontAwesomeIcon
-                            icon={isToolsOpen ? faChevronDown : faChevronRight}
-                            size="sm"
-                        />
-                    </button>
-                    {isToolsOpen && (
-                        <div className="dropdown-content">
-                            <Link href="/tools/git-diff">
-                                <FontAwesomeIcon icon={faFileCode} /> Git Diff Viewer
-                            </Link>
-                        </div>
-                    )}
-                </div>
+                        <FontAwesomeIcon icon={item.icon} /> {item.label}
+                    </Link>
+                ))}
             </nav>
         </aside>
     );
